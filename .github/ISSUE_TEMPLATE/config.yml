@@ -3,4 +3,4 @@ contact_links:
   - name: Add new ToDo
     about: made by config.yml
     # edit {username} and {repo} for your environment
-    url: https://github.com/kaitas/ToDo/issues/new?template=custom.md&projects=kaitas%2FToDo%2F1&labels=ToDo
+    url: https://github.com/1000-x-t30/ty-enquete-app/issues/new?template=custom.md&projects=1000-x-t30%2FToDo%2F1&labels=ToDo
