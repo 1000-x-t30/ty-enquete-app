@@ -1,0 +1,46 @@
+version: '3.9'
+
+services:
+  web:
+    container_name: web
+    build: 
+      context: .
+      dockerfile: ./infra/node/Dockerfile
+    working_dir: /usr/src/app/web
+    restart: always
+    ports:
+      - 3000:3000
+    volumes:
+      - ./app/web:/usr/src/app/web
+    tty: true
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    networks:
+      - container-link
+
+  api:
+    container_name: api
+    build: 
+      context: .
+      dockerfile: ./infra/python/Dockerfile
+    command: python3 manage.py runserver 0.0.0.0:8000
+    working_dir: /usr/src/app/api
+    ports:
+      - 8000:8000
+    volumes:
+      - ./app/api:/usr/src/app/api
+    tty: true
+    networks:
+      - container-link
+
+#   db:
+#     container_name: db
+#     build: ./infra/database
+#     volumes:
+#       - db-store:/var/lib/mysql
+
+# volumes:
+#   db-store:
+
+networks:
+  container-link:
